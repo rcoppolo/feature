@@ -5,17 +5,14 @@
 -export([handle/2]).
 -export([terminate/3]).
 
--record(state, {
-}).
-
 init(_, Req, _Opts) ->
-  {ok, Req, #state{}}.
+  {ok, Redis} = eredis:start_link(),
+  {ok, Req, Redis}.
 
-handle(Req, State=#state{}) ->
-  {ok, C} = eredis:start_link(),
-  {ok, Feature} = eredis:q(C, ["GET", "feature:load_testing"]),
+handle(Req, Redis) ->
+  {ok, Feature} = eredis:q(Redis, ["GET", "feature:load_testing"]),
   {ok, Req2} = cowboy_req:reply(200, [{<<"content-type">>, <<"text/plain">>}], Feature, Req),
-  {ok, Req2, State}.
+  {ok, Req2, Redis}.
 
 terminate(_Reason, _Req, _State) ->
   ok.
