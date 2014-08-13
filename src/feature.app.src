@@ -1,11 +1,12 @@
 {application, feature, [
-	{description, ""},
+	{description, "Feature switch server!"},
 	{vsn, "0.1.0"},
 	{modules, []},
 	{registered, []},
 	{applications, [
 		kernel,
-		stdlib
+		stdlib,
+		cowboy
 	]},
 	{mod, {feature_app, []}},
 	{env, []}
