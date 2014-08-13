@@ -12,9 +12,9 @@ init(_, Req, _Opts) ->
   {ok, Req, #state{}}.
 
 handle(Req, State=#state{}) ->
-  {ok, Req2} = cowboy_req:reply(200, [{<<"content-type">>, <<"text/plain">>}],
-    <<"Hi world!">>,
-  Req),
+  {ok, C} = eredis:start_link(),
+  {ok, Feature} = eredis:q(C, ["GET", "feature:load_testing"]),
+  {ok, Req2} = cowboy_req:reply(200, [{<<"content-type">>, <<"text/plain">>}], Feature, Req),
   {ok, Req2, State}.
 
 terminate(_Reason, _Req, _State) ->

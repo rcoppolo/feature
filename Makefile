@@ -1,3 +1,4 @@
 PROJECT = feature
-DEPS = cowboy
+DEPS = cowboy eredis
+dep_eredis = git https://github.com/wooga/eredis
 include erlang.mk
