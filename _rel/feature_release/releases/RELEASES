@@ -1,0 +1,5 @@
+[{release,"feature_release","1","6.1",
+          [{kernel,"3.0.1","./lib/kernel-3.0.1"},
+           {stdlib,"2.1","./lib/stdlib-2.1"},
+           {feature,"0.1.0","./lib/feature-0.1.0"}],
+          permanent}].

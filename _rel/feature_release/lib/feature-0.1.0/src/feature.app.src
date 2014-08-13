@@ -1,0 +1,12 @@
+{application, feature, [
+	{description, ""},
+	{vsn, "0.1.0"},
+	{modules, []},
+	{registered, []},
+	{applications, [
+		kernel,
+		stdlib
+	]},
+	{mod, {feature_app, []}},
+	{env, []}
+]}.
