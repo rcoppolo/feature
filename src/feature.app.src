@@ -9,6 +9,7 @@
 		cowboy,
 		eredis
 	]},
+	{included_applications, [pooler]},
 	{mod, {feature_app, []}},
 	{env, []}
 ]}.
