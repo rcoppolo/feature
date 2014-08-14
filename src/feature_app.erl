@@ -8,14 +8,14 @@ start(_Type, _Args) ->
   Dispatch = cowboy_router:compile([
     {'_', [{"/feature", feature_handler, []}]}
   ]),
-  cowboy:start_http(http_listener, 100, [{port, 8000}],
+  cowboy:start_http(http_listener, 100, [{port, 8000}, {backlog, 1024}],
     [{env, [{dispatch, Dispatch}]}]
   ),
   Pools = [
       [{name, redis1},
        {group, redis},
-       {max_count, 50},
-       {init_count, 50},
+       {max_count, 100},
+       {init_count, 100},
        {start_mfa,
         {eredis, start_link, []}}]
       ],
